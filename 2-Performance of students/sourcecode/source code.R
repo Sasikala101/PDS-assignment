@@ -26,27 +26,29 @@ library(ggplot2)
 student_data <- read.csv("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\data_raw\\StudentsPerformance.csv")
 head(student_data)
 
-ggplot(student_data, aes(x = math.score, y = reading.score)) +
+ggplot(student_data, aes(x = writing.score, y = math.score)) +
   geom_point(aes(color = gender)) +
-  labs(x = "Math Score", y = "Reading Score", color = "Gender") +
-  ggtitle("Math Score vs Reading Score by Gender")
+  labs(x = "Writing Score", y = "Math Score", color = "Gender") +
+  ggtitle("Writing Score vs Math Score by Gender")
+ggsave("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\results\\graph1.png")
 
-ggplot(student_data, aes(x = race.ethnicity, y = math.score)) +
-  geom_boxplot(aes(fill = race.ethnicity)) +
-  labs(x = "Race/Ethnicity", y = "Math Score", fill = "Race/Ethnicity") +
-  ggtitle("Math Score by Race/Ethnicity")
-
-ggplot(student_data, aes(x = parental.level.of.education, fill = test.preparation.course)) +
+ggplot(student_data, aes(x = parental.level.of.education, y = reading.score)) +
+  geom_boxplot(aes(fill = parental.level.of.education)) +
+  labs(x = "parental level of education", y = "Reading Score", fill = "parental.level.of.education") +
+  ggtitle("Reading Score by parental level of education")
+ggsave("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\results\\graph2.png")
+ggplot(student_data, aes(x = race.ethnicity, fill = test.preparation.course)) +
   geom_bar(position = "dodge") +
-  labs(x = "Parental Level of Education", y = "Count", fill = "Test Preparation Course") +
-  ggtitle("Test Preparation Course by Parental Level of Education")
-
-ggplot(student_data, aes(x = writing.score)) +
+  labs(x = " Race_Ethnicity", y = "Count", fill = "Test Preparation Course") +
+  ggtitle("Test Preparation Course by  Race_Ethnicity")
+ggsave("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\results\\graph3.png")
+ggplot(student_data, aes(x = reading.score)) +
   geom_density(aes(color = gender)) +
-  labs(x = "Writing Score", y = "Density", color = "Gender") +
-  ggtitle("Density of Writing Scores by Gender")
-
-ggplot(student_data, aes(x = race.ethnicity, fill = factor(lunch))) +
+  labs(x = "reading Score", y = "Density", color = "Gender") +
+  ggtitle("Density of reading Scores by Gender")
+ggsave("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\results\\graph4.png")
+ggplot(student_data, aes(x = parental.level.of.education, fill = factor(lunch))) +
   geom_bar() +
-  labs(x = "Race/Ethnicity", y = "Count", fill = "Lunch") +
-  ggtitle("Lunch by Race/Ethnicity")
+  labs(x = "parental.level.of.education", y = "Count", fill = "Lunch") +
+  ggtitle("Lunch by parental.level.of.education")
+ggsave("C:\\Users\\sasik\\OneDrive\\Desktop\\project1pds\\results\\graph5.png")
